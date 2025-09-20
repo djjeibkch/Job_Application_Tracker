@@ -6,19 +6,34 @@ POST /logout
 import axios from 'axios'
 const baseUrl = import.meta.env.VITE_API_BASE_URL
 
-const register = newObject => {
+const register = async newObject => {
     const request = axios.post(`${baseUrl}/register`, newObject)
-    return request.then(response => response.data).catch(error => console.error(error));
+    try {
+        const response = await request;
+        return response.data;
+    } catch (error) {
+        return console.error(error);
+    }
 }
 
-const login = newObject => {
+const login = async newObject => {
     const request = axios.post(`${baseUrl}/login`, newObject)
-    return request.then(response => response.data).catch(error => console.error(error));
+    try {
+        const response = await request;
+        return response.data;
+    } catch (error) {
+        return console.error(error);
+    }
 }
 
-const logout = newObject => {
+const logout = async newObject => {
     const request = axios.post(`${baseUrl}/logout`, newObject)
-    return request.then(response => response.data).catch(error => console.error(error));
+    try {
+        const response = await request;
+        return response.data;
+    } catch (error) {
+        return console.error(error);
+    }
 }
 
 
