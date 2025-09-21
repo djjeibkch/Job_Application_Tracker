@@ -9,11 +9,11 @@ const __dirname = path.dirname(__filename); // get the name of the directory
 const app = express();
 app.use(cors());
 const baseUrl = process.env.VITE_API_BASE_URL;
-const PORT =  3001;
+const PORT = 3001;
 
 app.use(express.static(__dirname + '/public'));
 
-function Image(id, country, city, comment = "No Comment", author_id){
+function Image(id, country, city, comment = "No Comment", author_id) {
     this.id = id;
     this.country = country;
     this.city = city;
@@ -21,10 +21,12 @@ function Image(id, country, city, comment = "No Comment", author_id){
     this.author_id = author_id;
 }
 
-let images = [  {    id: "1",    content: "HTML is easy",    important: true  },
-    {    id: "2",    content: "Browser can execute only JavaScript",    important: false  },
-    {    id: "3",    content: "GET and POST are the most important methods of HTTP protocol",
-        important: true  }]
+let images = [{ id: "1", content: "HTML is easy", important: true },
+{ id: "2", content: "Browser can execute only JavaScript", important: false },
+{
+    id: "3", content: "GET and POST are the most important methods of HTTP protocol",
+    important: true
+}]
 
 app.get("*", (request, response) => {
     response.sendFile(__dirname + '/index.html');

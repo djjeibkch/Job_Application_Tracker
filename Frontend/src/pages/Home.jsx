@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+/*
 const [notes, setNotes] = useState([])
 const [newNote, setNewNote] = useState('')
 const [showAll, setShowAll] = useState(true)
@@ -46,38 +47,40 @@ const handleNoteChange = (event) => {
 
 const notesToShow = showAll ? notes : notes.filter((note) => note.important)
 
-return (
-    <div>
-        <h1>Notes</h1>
+const Home = () => {
+    return (
         <div>
-            <button onClick={() => setShowAll(!showAll)}>
-                show {showAll ? 'important' : 'all'}
-            </button>
+            <h1>Notes</h1>
+            <div>
+                <button onClick={() => setShowAll(!showAll)}>
+                    show {showAll ? 'important' : 'all'}
+                </button>
+            </div>
+            <ul>
+                {notesToShow.map((note) => (
+                    <Note
+                        key={note.id}
+                        note={note}
+                        toggleImportance={() => toggleImportanceOf(note.id)}
+                    />
+                ))}
+            </ul>
+            <form onSubmit={addNote}>
+                <input value={newNote} onChange={handleNoteChange} />
+                <button type="submit">save</button>
+            </form>
         </div>
-        <ul>
-            {notesToShow.map((note) => (
-                <Note
-                    key={note.id}
-                    note={note}
-                    toggleImportance={() => toggleImportanceOf(note.id)}
-                />
-            ))}
-        </ul>
-        <form onSubmit={addNote}>
-            <input value={newNote} onChange={handleNoteChange} />
-            <button type="submit">save</button>
-        </form>
-    </div>
-)
+    )
+};
+
+*/
 
 const Home = () => {
     return (
-        <>
+        <div>
             <h1>Home</h1>
-
-        </>
-
-    );
+        </div>
+    )
 };
 
 export default Home;
