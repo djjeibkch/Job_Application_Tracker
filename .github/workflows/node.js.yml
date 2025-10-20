@@ -1,13 +1,17 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: Frontend Node.js CI
 
 on:
   push:
     branches: [ "master" ]
+    paths:
+       -Frontend/**
   pull_request:
     branches: [ "master" ]
+    paths:
+       -Frontend/**
 
 jobs:
   test:
@@ -30,12 +34,15 @@ jobs:
         
     - name: "🔧 install npm@latest"
       run: npm ci
+      working-directory: ./Frontend
       
     - name: "🔧 build"  
       run: npm run build --if-present
+      working-directory: ./Frontend
       
     - name: "🔍 run tests"
       run: npm test --if-present
+      working-directory: ./Frontend
 
   lint:
     name: Code standards
@@ -53,9 +60,12 @@ jobs:
 
       - name: "🔧 install npm@latest"
         run: npm ci
+        working-directory: ./Frontend
         
       - name: "🔧 build"  
         run: npm run build --if-present
+        working-directory: ./Frontend
 
       - name: "🔍 lint code"
         run: npm run lint --if-present
+        working-directory: ./Frontend
